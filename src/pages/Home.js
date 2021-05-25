@@ -4,6 +4,7 @@ import { loadGames } from '../actions/gamesAction';
 import Game from '../components/Game';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import GameDetails from '../components/GameDetails';
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -15,6 +16,7 @@ const Home = () => {
 
     return (
         <GameList>
+            <GameDetails />
             <h2>Upcomming games</h2>
             <Games>
             {upcommingGames.map((game, index) => {
@@ -35,6 +37,7 @@ const Home = () => {
             {popularGames.map((game, index) => {
                 return(
                     <Game 
+                        key={index}
                         name={game.name} 
                         released={game.released} 
                         id={game.id}
@@ -49,6 +52,7 @@ const Home = () => {
             {newGames.map((game, index) => {
                 return(
                     <Game 
+                        key={index}
                         name={game.name} 
                         released={game.released} 
                         id={game.id}
