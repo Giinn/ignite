@@ -12,14 +12,40 @@ const Home = () => {
     }, [dispatch]);
 
     const { popularGames, newGames, upcommingGames } = useSelector(state => state.games);
-    console.log(popularGames, newGames, upcommingGames);
   
     return (
         <GameList>
-            <h1>Hello from home page!</h1>
-
+            <h2>Upcomming games</h2>
             <Games>
             {upcommingGames.map((game, index) => {
+                return(
+                    <Game
+                        name={game.name}
+                        released={game.released}
+                        id={game.id}
+                        image={game.background_image}
+                    />
+                )
+            })}
+            </Games>
+
+            <h2>Popular games</h2>
+            <Games>
+            {popularGames.map((game, index) => {
+                return(
+                    <Game 
+                        name={game.name} 
+                        released={game.released} 
+                        id={game.id}
+                        image={game.background_image}    
+                    />
+                )
+            })}
+            </Games>
+
+            <h2>New games</h2>
+            <Games>
+            {newGames.map((game, index) => {
                 return(
                     <Game 
                         name={game.name} 
