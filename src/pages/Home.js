@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadGames } from '../gamesAction';
+import { loadGames } from '../actions/gamesAction';
 import Game from '../components/Game';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
@@ -12,7 +12,7 @@ const Home = () => {
     }, [dispatch]);
 
     const { popularGames, newGames, upcommingGames } = useSelector(state => state.games);
-  
+
     return (
         <GameList>
             <h2>Upcomming games</h2>
@@ -20,6 +20,7 @@ const Home = () => {
             {upcommingGames.map((game, index) => {
                 return(
                     <Game
+                        key={index}
                         name={game.name}
                         released={game.released}
                         id={game.id}
