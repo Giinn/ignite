@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadGames } from '../actions/gamesAction';
 import Game from '../components/Game';
@@ -10,13 +10,15 @@ import { useLocation } from 'react-router-dom';
 const Home = () => {
     // get current location
     const location = useLocation();
+    const [userSearchedGames, setUserSearchedGames] = useState([]);
     const pathId = location.pathname.split('/')[2];
     const { popularGames, newGames, upcommingGames, searchedGames } = useSelector(state => state.games);
 
     const dispatch = useDispatch();
     useEffect(() => {
       dispatch(loadGames());
-    }, [dispatch]);
+      setUserSearchedGames(searchedGames);
+    }, [dispatch, searchedGames]);
 
     console.log(searchedGames)
     return (
@@ -27,6 +29,7 @@ const Home = () => {
                         <GameDetails pathId={pathId}/>
                     }
                 </AnimatePresence>
+                {userSearchedGames.length > 0 && (
                 <div className="searched">
                     <h2>Searched games</h2>
                     <Games>
@@ -42,7 +45,7 @@ const Home = () => {
                         )
                     })}
                     </Games>
-                </div>
+                </div>)}
                 <h2>Upcomming games</h2>
                 <Games>
                 {upcommingGames.map((game, index) => {

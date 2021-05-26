@@ -30,19 +30,19 @@ const lastYear = `${currentYear - 1}-${currentMonth}-${currentDay}`;
 const nextYear = `${currentYear + 1}-${currentMonth}-${currentDay}`;
 
 // games
-const popular_games =  `games?dates=${lastYear},${currentDate}&ordering=-rating&page_size=10&`;
-const upcomming_games = `games?dates=${currentDate},${nextYear}&ordering=-added&page_size=10&`;
-const new_games = `games?dates=${lastYear},${currentDate}&ordering=-release&page_size=10&`;
+const popular_games =  `games?dates=${lastYear},${currentDate}&ordering=-rating&page_size=12&`;
+const upcomming_games = `games?dates=${currentDate},${nextYear}&ordering=-added&page_size=12&`;
+const new_games = `games?dates=${lastYear},${currentDate}&ordering=-release&page_size=12&`;
 
 export const popularGamesURL = () => `${base_url}${popular_games}${apiKey}`;
 export const upcommingGamesURL = () => `${base_url}${upcomming_games}${apiKey}`;
 export const newNewGamesURL = () => `${base_url}${new_games}${apiKey}`;
 
 // details of specific game
-export const getGameDetailsUrl = (gameId) => `${base_url}games/${gameId}.json?&${apiKey}`;
+export const getGameDetailsUrl = (gameId) => `${base_url}games/${gameId}?${apiKey}`;
 
 // game screenshots
-export const gameScreenshotURL = (game_id) => `${base_url}games/${game_id}/screenshots?&.json?&${apiKey}`;
+export const gameScreenshotURL = (game_id) => `${base_url}games/${game_id}/screenshots?${apiKey}`;
 
 // search game
 export const searchGameUrl = (game_name) => `${base_url}games?${apiKey}&search=${game_name}&page_size=10`;

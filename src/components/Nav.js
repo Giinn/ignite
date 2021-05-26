@@ -28,13 +28,14 @@ const Nav = () => {
 
     return (
         <StyledNav>
-            <Logo onClick={clearSearchedGames}>
+            <Logo>
                 <img src={logo} alt="logo" />
                 <h1>Ignite</h1>
             </Logo>
             <form onSubmit={submitSearch} className="search">
                 <input type="text" onChange={inputHandler} value={textInput} />
                 <button type="submit" >Search</button>
+                <button onClick={clearSearchedGames}>Clear Search</button>
             </form>
         </StyledNav>
     );
@@ -59,6 +60,7 @@ const StyledNav = styled(motion.div)`
         cursor: pointer;
         background: #ff7676;
         color: white;
+        margin: 0rem 0.3rem;
     }
 `;
 
