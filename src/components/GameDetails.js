@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { smallImage } from '../util';
 import { getPlatformImages } from '../util';
 
 // star images
@@ -65,7 +64,7 @@ const GameDetails = ({ pathId }) => {
                             </Info>
                         </Stats>
                         <Media>
-                            <motion.img layoutId={`image ${pathId}`} src={smallImage(game.background_image, 1280)} alt={game.name} />
+                            <motion.img layoutId={`image ${pathId}`} src={game.background_image} alt={game.name} />
                         </Media>
                         <Description>
                             <p>{game.description_raw}</p>
@@ -73,7 +72,7 @@ const GameDetails = ({ pathId }) => {
                         <Gallery>
                             {screenshots.results.map(screen => {
                                 return (
-                                    <img src={smallImage(screen.image, 1280)} alt={screen.id} key={screen.id} />
+                                    <img src={screen.image} alt={screen.id} />
                                 )
                             })}
                         </Gallery>

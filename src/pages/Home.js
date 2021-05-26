@@ -20,7 +20,6 @@ const Home = () => {
       setUserSearchedGames(searchedGames);
     }, [dispatch, searchedGames]);
 
-    console.log(searchedGames)
     return (
         <GameList>
             <AnimateSharedLayout type="crossfade">
@@ -96,8 +95,9 @@ const Home = () => {
 }
 
 const GameList = styled(motion.div)`
-    padding: 0rem 5rem;
+    padding: 1rem 5rem;
     h2 {
+        text-decoration: underline;
         padding: 5rem 0rem;
     };
 `;

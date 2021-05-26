@@ -6,16 +6,6 @@ import nintendo from './img/nintendo.svg';
 import apple from './img/apple.svg';
 import gamepad from './img/gamepad.svg';
 
-
-// media resize
-export const smallImage = (imagePath, size) => {
-    const image = imagePath.match(/media\/screenshots/)
-        ? imagePath.replace("media/screenshots", `media/resize/${size}/-/screenshots`)
-        : imagePath.replace("media/games/", `media/resize/${size}/-/games/`)
-
-    return image;
-}
-
 // return a platform image based on it's name
 export const getPlatformImages = (platform) => {
     switch (platform) {
