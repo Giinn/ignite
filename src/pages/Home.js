@@ -11,14 +11,14 @@ const Home = () => {
     // get current location
     const location = useLocation();
     const pathId = location.pathname.split('/')[2];
+    const { popularGames, newGames, upcommingGames, searchedGames } = useSelector(state => state.games);
 
     const dispatch = useDispatch();
     useEffect(() => {
       dispatch(loadGames());
     }, [dispatch]);
 
-    const { popularGames, newGames, upcommingGames } = useSelector(state => state.games);
-
+    console.log(searchedGames)
     return (
         <GameList>
             <AnimateSharedLayout type="crossfade">
@@ -27,6 +27,22 @@ const Home = () => {
                         <GameDetails pathId={pathId}/>
                     }
                 </AnimatePresence>
+                <div className="searched">
+                    <h2>Searched games</h2>
+                    <Games>
+                    {searchedGames.map((game, index) => {
+                        return(
+                            <Game
+                                key={index}
+                                name={game.name}
+                                released={game.released}
+                                id={game.id}
+                                image={game.background_image}
+                            />
+                        )
+                    })}
+                    </Games>
+                </div>
                 <h2>Upcomming games</h2>
                 <Games>
                 {upcommingGames.map((game, index) => {
