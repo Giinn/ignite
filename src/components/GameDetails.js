@@ -11,7 +11,7 @@ import starFull from '../img/star-full.png';
 
 const GameDetails = ({ pathId }) => {
     const history = useHistory();
-    const { screenshots, game, isLoading } = useSelector(state => state.details);
+    const { screenshots, game, isDetailsLoading } = useSelector(state => state.details);
 
     const exitDetailHandler = (event) => {
         const element = event.target;
@@ -39,7 +39,7 @@ const GameDetails = ({ pathId }) => {
     
     return (
         <>
-            {!isLoading && (
+            {!isDetailsLoading && (
                 <CardShadow className="shadow" onClick={exitDetailHandler} >
                     <Details layoutId={pathId}>
                         <Stats>
@@ -72,7 +72,7 @@ const GameDetails = ({ pathId }) => {
                         <Gallery>
                             {screenshots.results.map(screen => {
                                 return (
-                                    <img src={screen.image} alt={screen.id} />
+                                    <img key={screen.id} src={screen.image} alt={screen.id} />
                                 )
                             })}
                         </Gallery>
